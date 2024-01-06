@@ -1,5 +1,13 @@
 import heapq
 
+def isthere(func):
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except:
+            return 'Error. self.help_me not found 404'
+    return wrapper
+
 class Solution:
     def __init__(self):
         self.help_me = 'Help text'
@@ -7,12 +15,11 @@ class Solution:
 
     def start_sol(self):
         print('Pertinent class. no not modified')
-
+        
+    @isthere
     def help(self):
-        try:
-            print(self.help_me)
-        except:
-            print('Error. self.help_me not found')
+        print(self.help_me)
+        
 
     def Solution(self, n):
         return 0
@@ -32,7 +39,7 @@ class LastStoneWaight(Solution):
 
 class isWarmer(Solution):
     def __init__(self):
-        self.help_me = 'def Solution(list[int]) => list[int]\nWhat is does'
+        self.help_me1 = 'def Solution(list[int]) => list[int]\nWhat is does'
     def Solution(self, n):
         answer = [0] * len(n)
         stack = []
@@ -42,6 +49,8 @@ class isWarmer(Solution):
                 answer[x] = i -x
             stack.append((i, n[i]))    
         return answer
+    def atest(self):
+        return self.test
 
 def main():
     x = Solution()
